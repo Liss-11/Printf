@@ -1,0 +1,160 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/07 23:26:14 by afrolova          #+#    #+#             */
+/*   Updated: 2022/07/07 16:46:02 by afrolova         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "libftprintf.h"
+
+/*int	ft_putchar_error(char c, int fd){
+	int	resp;
+
+	resp = write(fd, &c, 4);
+	if (resp != 4)
+		return (-1);
+	else
+		return (resp);
+}*/
+
+int my_putchar(int c, int *we)
+{
+	if (write (1, &c, 1) != 1)
+	 *we = 1;
+	return (1);
+}
+
+static int ft_printn(long long n, int sign, int *we)
+{
+	char c;
+	int a;
+	int b;
+
+	c = n % 10 + '0';
+	if (n < 10)
+	{
+		a = write(1, "-", sign);
+		b = write(1, &c ,1);
+		if(a == -1|| b  == -1)
+			*we = 1;
+		return (a + b);
+	}
+	a = ft_printn(n/10, sign, we);
+	b = write(1, &c, 1);
+	if(b == -1 || a == -1)
+		*we = 1;
+	return (a + b);
+}
+
+int	ft_putnbr(int n, int *we)
+{
+	long long nbr;
+	
+	nbr = (long long)n;
+	if (nbr <  0)
+	{
+		return (ft_printn(nbr * -1, 1, we));
+	}
+	return (ft_printn(n, 0, we));
+}
+
+int	ft_putnbr_unsigned(unsigned int n)
+{
+	char			c;
+	
+	c = (n % 10) + '0';
+	if (n < 10)
+		return (write(1, &c, 1));
+	return (ft_putnbr_unsigned(n/10) + write(1, &c, 1));
+}
+
+int	ft_strlen_print(char *str, int *we)
+{
+	int	i;
+	int a;
+
+
+	i = 0;
+	a = 0;
+
+
+	if(!str)
+	{
+		//return(0);
+		a = write(1, "(null)", 6);
+		if(a == -1)
+			*we = 1;
+		return(6);
+	}
+
+	if(!str[i])
+		return(0);
+
+	while (str[i] != '\0')
+	{
+		a = write(1, &str[i], 1);
+		if(a == -1)
+			*we = 1;
+		i++;
+	}
+	return (i);
+}
+
+int	to_hexadecimal(unsigned int n, char str)
+{
+	char	*arr;
+	int		re;
+
+	if (str == 'x')
+		arr = "0123456789abcdef";
+	if (str == 'X')
+		arr = "0123456789ABCDEF";
+	re = n % 16;
+	if (n < 16)
+		return (write (1, &arr[re], 1));
+	return (to_hexadecimal(n/16, str) + write (1, &arr[re], 1));
+}
+
+
+/*int	to_hexadecimal_ptr(unsigned long long n)
+{
+	char	*arr;
+	int		re;
+	ssize_t	s;
+	
+	if (str == 'x')
+		arr = "0123456789abcdef";
+	if (str == 'X')
+		arr = "0123456789ABCDEF";
+	re = n % 16;
+	if (n < 16)
+	{
+		s = write(1, &arr[re], 1);
+		return (s);
+	}
+	return (to_hexadecimal_ptr(n/16, str) + write (1, &arr[re], 1));
+}*/
+
+//rerturn (ft_putchar() - me devuelve string o error...(-1));
+
+/*public static String decimalAHexadecimal(int decimal) {
+    String hexadecimal = "";
+    String caracteresHexadecimales = "0123456789abcdef";
+    while (decimal > 0) {
+        int residuo = decimal % 16;
+        hexadecimal = caracteresHexadecimales.charAt(residuo) + hexadecimal; // Agregar a la izquierda
+        decimal /= 16;
+    }
+    return hexadecimal;*/
+
+//unsigned long long - puntero
+//unsigned int - hexadecimal
+//misma 
+
+//con vertir_hsx(unsogned long long)
+//
+
