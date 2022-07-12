@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 18:29:05 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/07 20:16:59 by afrolova         ###   ########.fr       */
+/*   Created: 2022/07/12 14:52:20 by afrolova          #+#    #+#             */
+/*   Updated: 2022/07/12 15:09:37 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stdio.h>
 # include <stdarg.h>
-# include "libft.h"
+# include <unistd.h>
 
 //ft_printf.c
 int		ft_printf(char const *str, ...);

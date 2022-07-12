@@ -6,10 +6,10 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:32:05 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/07 20:17:07 by afrolova         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:53:09 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	return_value(va_list ptr, char const *str, int *we)
 {
@@ -33,10 +33,10 @@ int	return_value(va_list ptr, char const *str, int *we)
 int ft_printf(char const *str, ...)
 {
 	int		len;
-	int		resp;
+//	int		resp;
 	va_list	ptr;
 	int		we;
-//	char	*error;
+	
 	va_start (ptr, str);
 
 	we = 0;
@@ -45,10 +45,11 @@ int ft_printf(char const *str, ...)
 	{
 		if (*str == '%')
 		{ 
-			resp = return_value(ptr, ++str, &we);
+//			resp = return_value(ptr, ++str, &we);
+			len += return_value(ptr, ++str, &we);
 			if (we)
 				return (-1);
-			len += resp;
+		//	len += resp;
 		}
 		else
 		{
@@ -64,8 +65,7 @@ int ft_printf(char const *str, ...)
 	return (len);
 }
 
-/*
-int	main(void)
+/*int	main(void)
 {
 	char const	*str = "\nCom\no estas %d\n %i %u\n %s %c %X %c %x\n";
 //	char const	*str = "\nCom\no estas %d\n %i %u\n %s %c %p\n";

@@ -6,10 +6,10 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:55:27 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/07 20:17:02 by afrolova         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:53:29 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	to_hexadecimal(unsigned int n, char str, int *we)
 {

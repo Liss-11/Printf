@@ -6,10 +6,10 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:54:23 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/07 20:10:14 by afrolova         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:53:45 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_printn(long long n, int sign, int *we)
 {
