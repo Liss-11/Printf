@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:55:27 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/12 14:53:29 by afrolova         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:14:14 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -23,7 +23,7 @@ int	to_hexadecimal(unsigned int n, char str, int *we)
 	re = n % 16;
 	if (n < 16)
 		return (ft_write (1, &arr[re], 1, we));
-	return (to_hexadecimal(n/16, str, we) + ft_write (1, &arr[re], 1, we));
+	return (to_hexadecimal(n / 16, str, we) + ft_write(1, &arr[re], 1, we));
 }
 
 int	to_hexadecimal_ptr(unsigned long long n, int *we)
@@ -39,7 +39,7 @@ int	to_hexadecimal_ptr(unsigned long long n, int *we)
 		s = ft_write(1, &arr[re], 1, we);
 		return (s);
 	}
-	return (to_hexadecimal_ptr(n/16, we) + ft_write(1, &arr[re], 1, we));
+	return (to_hexadecimal_ptr(n / 16, we) + ft_write(1, &arr[re], 1, we));
 }
 
 int	ft_write_pointer(unsigned long long n, int *we)
