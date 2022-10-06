@@ -6,7 +6,7 @@
 #    By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 22:56:47 by afrolova          #+#    #+#              #
-#    Updated: 2022/07/12 16:17:25 by afrolova         ###   ########.fr        #
+#    Updated: 2022/10/06 19:53:58 by afrolova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,23 +26,17 @@ WHITE = \033[0;97m
 
 DIR_OBJ = OBJ
 DIR_SRCS = SRCS
+DIR_LIBFT = Libft/INC
 
-# Anadir el MAIN, si quiero hacer el ejecutable
-SRCS = ft_printf.c ft_write.c ft_numbers.c ft_hexadecimales.c ft_printf_main.c 
-
-#SRCS = ft_printf.c ft_write.c ft_numbers.c ft_hexadecimales.c 
-
-#convierte los archivos que le paso en SRCS de .c a .o. y los ubica en la carpeta OBJ
+SRCS = ft_printf.c ft_write.c ft_numbers.c ft_hexadecimales.c 
 
 OBJS = $(addprefix $(DIR_OBJ)/,$(SRCS:.c=.o))
 EXEC_NAME = printf
-NAME := libftprintf.a
+NAME = libftprintf.a
 CC = gcc
 RM = rm -rf
 AR += -rcs
 CFLAGS += -Wall -Werror -Wextra
-
-#Estoy incluyendo mi libft.h dentro del libftprintf.h, si hago la copia... hace falta??
 
 HEADER = INC/ft_printf.h
 
@@ -51,15 +45,14 @@ all: 				OBJ/ $(NAME)
 $(NAME):			$(OBJS)
 					@$(AR) $@ $(OBJS)
 					@echo "${GREEN}<----------- ft_printf compiled successfully! ----------->${END_COLOR}"
+
 $(DIR_OBJ)/%.o: 	$(DIR_SRCS)/%.c $(HEADER)
 					@$(CC) -IINC $(CFLAGS) -c $< -o $@
 
 OBJ/:
 			@-mkdir OBJ
 
-#para generar un ejecutable (debe tener el main)
-
-exec:		$(OBJS) 
+exec:		$(OBJS) $(LIBFT)
 			@$(CC) $(OBJS) -o $(EXEC_NAME)
 
 clean:
@@ -72,10 +65,10 @@ fclean:		clean
 			@$(RM) $(EXEC_NAME)
 			@echo "${CYAN}<----------- ft_print executable files cleaned! ----------->${END-COLOR}"
 			
-re:			fclean all
+re:			fclean
+			@make
 			@echo "${YELLOW}<----------- Cleaned und rebuilt everything for ft_printf ----------->${END_COLOR}"
 
-dev: CFLAGS = -Wall -Wextra -Wpedantic -fsanitize=address,undefined
 dev: re
 
 .PHONY: all clean fclean re dev exec 

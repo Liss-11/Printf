@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:32:05 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/13 16:14:17 by afrolova         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:18:53 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -30,8 +30,6 @@ int	return_value(va_list ptr, char const *str, int *we)
 	return (0);
 }
 
-//Functions whith too many lines
-
 int	ft_printf(char const *str, ...)
 {
 	int		len;
@@ -44,17 +42,15 @@ int	ft_printf(char const *str, ...)
 	while (*str != '\0')
 	{
 		if (*str == '%')
-		{
 			len += return_value(ptr, ++str, &we);
-			if (we)
-				return (-1);
-		}
 		else
 		{
 			if (write(1, str, 1) != 1)
 				return (-1);
 			len++;
 		}
+		if (we)
+			return (-1);
 		str++;
 	}
 	va_end (ptr);

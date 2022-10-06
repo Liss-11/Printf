@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 14:52:20 by afrolova          #+#    #+#             */
-/*   Updated: 2022/07/12 15:09:37 by afrolova         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:57:33 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -14,6 +14,16 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
+
+# define GREEN "\033[1;30m"
+# define PURPLE "\033[1;35m"
+# define BLUE "\033[1;34m"
+# define BLUE_ITALIC "\033[3;34m"
+# define CYAN "\033[1;36m" 
+# define CYAN_ITALIC "\033[3;36m" 
+# define RESET "\033[1;0m"
+# define WHITE "\033[0;37m"
+# define YELLOW "\033[4;33m"
 
 //ft_printf.c
 int		ft_printf(char const *str, ...);
