@@ -6,7 +6,7 @@
 #    By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 22:56:47 by afrolova          #+#    #+#              #
-#    Updated: 2022/10/06 19:53:58 by afrolova         ###   ########.fr        #
+#    Updated: 2022/10/19 01:46:56 by afrolova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,11 @@ HEADER = INC/ft_printf.h
 all: 				OBJ/ $(NAME)
 
 $(NAME):			$(OBJS)
-					@$(AR) $@ $(OBJS)
+					$(AR) $@ $(OBJS)
 					@echo "${GREEN}<----------- ft_printf compiled successfully! ----------->${END_COLOR}"
 
 $(DIR_OBJ)/%.o: 	$(DIR_SRCS)/%.c $(HEADER)
-					@$(CC) -IINC $(CFLAGS) -c $< -o $@
+					$(CC) -IINC $(CFLAGS) -c $< -o $@
 
 OBJ/:
 			@-mkdir OBJ
